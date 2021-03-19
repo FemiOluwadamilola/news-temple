@@ -45,14 +45,18 @@
                 </h3>
                 
                 <p>
-                    <%- article.content.replace(/<[^>]+>/g, '') %>
+                    <%- article.content.replace(/<[^>]+>/g, '') %> <span style="color:red">see more!</span>
                 </p>
                 <br>
-                <p style="margin-bottom: 0px; position: absolute; right: 0; bottom: 0; font-family: ui-monospace;">Updated:<span style="color:red;" ><%- new Date(article.publishedAt.slice(0,10)).toDateString() %><%- moment.utc(article.publishedAt).local().format('hh : mm A') %></span></p>
-
-
-            </a>
+                <p style="margin-bottom: 0px; position: absolute; right: 5; bottom: 0; font-family: ui-monospace;">Updated:<span style="color:red;" > <%- new Date(article.publishedAt.slice(0,10)).toDateString() %> <%- moment.utc(article.publishedAt).local().format('hh : mm A') %></span></p></a>
             <% } %>
             <% }) %>
     </div>
 </div>
+
+<footer class="footer mt-auto py-3">
+    <div class="container">
+      <!-- <span class="text-muted">Place sticky footer content here.</span> -->
+      <h4> &copy; 2021 news<span style="color:red;">Temple</span></h4>
+    </div>
+</footer>

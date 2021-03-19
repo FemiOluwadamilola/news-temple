@@ -43,7 +43,7 @@ newsRoute.get('/tech', async(req,res) => {
 // BUSINESS ROUTE
 newsRoute.get('/bus', async(req,res) => {
     try{
-        const url = `http://newsapi.org/v2/everything?q=busi&apiKey=${key}`;
+        const url = `http://newsapi.org/v2/everything?q=business&apiKey=${key}`;
         const news = await axios.get(url);
         const output = await news.data;
     
