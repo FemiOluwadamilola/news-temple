@@ -11,7 +11,8 @@ newsRoute.get('/', async (req,res) => {
     const output = await news.data;
 
     res.render('news',{
-        articles:output.articles
+        articles:output.articles,
+        title:'welcome'
     })
 
    }catch(err){
@@ -30,7 +31,8 @@ newsRoute.get('/tech', async(req,res) => {
         const output = await news.data;
     
         res.render('news',{
-            articles:output.articles
+            articles:output.articles,
+            title:'technologies'
         })
     
        }catch(err){
@@ -48,7 +50,8 @@ newsRoute.get('/bus', async(req,res) => {
         const output = await news.data;
     
         res.render('news',{
-            articles:output.articles
+            articles:output.articles,
+            title:'business'
         })
     
        }catch(err){
@@ -66,7 +69,8 @@ newsRoute.get('/sport', async(req,res) => {
         const output = await news.data;
     
         res.render('news',{
-            articles:output.articles
+            articles:output.articles,
+            title:'sport'
         })
     
        }catch(err){
