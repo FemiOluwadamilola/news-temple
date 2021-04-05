@@ -1,101 +1,25 @@
 const express = require('express');
-const {key} = require('../config/key');
-const axios = require('axios');
-const math = require('math');
 const newsRoute = express.Router();
+const {
+    getCurrentNews,
+    getTechNews,
+    getBusinessNews,
+    getSportNews,
+    searchNews
+    } = require('../controllers/newsController');
 
-newsRoute.get('/', async (req,res) => {
-   try{
-    const url = `http://newsapi.org/v2/top-headlines?country=ng&apiKey=${key}`;
-    const news = await axios.get(url);
-    const output = await news.data;
-
-    res.render('news',{
-        articles:output.articles,
-        title:'welcome'
-    })
-
-   }catch(err){
-       if(err.response){
-        console.log(err);
-       }
-   }
-
-})
+newsRoute.get('/', getCurrentNews)
 
 // TECH ROUTE
-newsRoute.get('/tech', async(req,res) => {
-    try{
-        const url = `http://newsapi.org/v2/everything?q=tech&apiKey=${key}`;
-        const news = await axios.get(url);
-        const output = await news.data;
-    
-        res.render('news',{
-            articles:output.articles,
-            title:'technologies'
-        })
-    
-       }catch(err){
-           if(err.response){
-            console.log(err);
-           }
-       }
-})
+newsRoute.get('/tech', getTechNews)
 
 // BUSINESS ROUTE
-newsRoute.get('/bus', async(req,res) => {
-    try{
-        const url = `http://newsapi.org/v2/everything?q=business&apiKey=${key}`;
-        const news = await axios.get(url);
-        const output = await news.data;
-    
-        res.render('news',{
-            articles:output.articles,
-            title:'business'
-        })
-    
-       }catch(err){
-           if(err.response){
-            console.log(err);
-           }
-       }
-})
+newsRoute.get('/bus', getBusinessNews)
 
 // SPORT ROUTE
-newsRoute.get('/sport', async(req,res) => {
-    try{
-        const url = `http://newsapi.org/v2/everything?q=sport&apiKey=${key}`;
-        const news = await axios.get(url);
-        const output = await news.data;
-    
-        res.render('news',{
-            articles:output.articles,
-            title:'sport'
-        })
-    
-       }catch(err){
-           if(err.response){
-            console.log(err);
-           }
-       }
-})
+newsRoute.get('/sport', getSportNews)
 
 // SEARCH ROUTE
-newsRoute.post('/search', async(req,res) => {
-    const search = req.body.search;
-    try{
-     const url = `http://newsapi.org/v2/everything?q=${search}&apiKey=${key}`;
-     const news = await axios.get(url);
-     const output = await news.data;
+newsRoute.post('/search', searchNews)
 
-     res.render('news',{
-         articles:output.articles
-     })
-
-    }catch(err){
-        if(err.response){
-            console.log(err);
-        } 
-    }
-})
 module.exports = newsRoute;

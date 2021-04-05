@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5000;
 const moment = require('moment');
 app.locals.moment = moment;
 
+// require('dotenv').config();
 
 // EJS
 app.use(expressLayouts);
