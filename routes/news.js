@@ -1,14 +1,5 @@
 const express = require('express');
 const newsRoute = express.Router();
-const {
-    getCurrentNews,
-    getTechNews,
-    getBusinessNews,
-    getSportNews,
-    searchNews
-    } = require('../controllers/newsController');
-
-newsRoute.get('/', getCurrentNews)
 
 // TECH ROUTE
 newsRoute.get('/tech', getTechNews)
@@ -20,6 +11,8 @@ newsRoute.get('/bus', getBusinessNews)
 newsRoute.get('/sport', getSportNews)
 
 // SEARCH ROUTE
-newsRoute.post('/search', searchNews)
+
+newsRoute.post('/search', search)
+
 
 module.exports = newsRoute;
